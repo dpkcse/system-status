@@ -95,6 +95,7 @@
           <div class="col-sm-12 col-lg-12">
           <p><img src="/img/logo.png" alt=""></p>
           <p>System Iformation Board - Hyper Remede - Copyright 2018</p>
+          <button onclick="aaa();">bbbbbbbbbbbbbbbbbb</button>
           </div>
 
         </div><!-- /row -->
@@ -114,6 +115,12 @@
   socket.on('disconnect', function () {
     console.log('Disconnected');
   });
+
+  function aaa(){
+    socket.emit('getRamInfo',function(response){
+      console.log(response)
+    });
+  }
 
   
 </script>

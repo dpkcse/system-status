@@ -1,4 +1,7 @@
 var moment = require('moment');
+var {
+    getRamInfo
+} = require('../utils/update');
 module.exports = function (io) {
 
     var app = require('express');
@@ -16,6 +19,14 @@ module.exports = function (io) {
             console.log(currentUser);
             client.join(currentUser);
         });
+
+        client.on('getRamInfo', function (userdata,callback) {
+            getRamInfo((respons)=>{
+                console.log(respons);
+            });
+        });
+
+
 
     });
 
