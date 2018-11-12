@@ -1,6 +1,7 @@
 var express = require('express');
 var router = express.Router();
 const si = require('systeminformation');
+var moment = require('moment');
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
@@ -17,11 +18,11 @@ router.get('/', function(req, res, next) {
   .then(data => console.log(data))
   .catch(error => console.error(error));
 
-  setInterval(function () {
-    si.networkStats().then(data => {
-      console.log(data);
-    })
-  }, 1000)
+  // setInterval(function () {
+  //   si.networkStats().then(data => {
+  //     console.log(data);
+  //   })
+  // }, 1000)
   
   res.render('index', { title: 'Express' });
 });

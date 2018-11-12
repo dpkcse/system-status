@@ -12,8 +12,8 @@
     <link href="/stylesheets/font-style.css" rel="stylesheet">
     <link href="/stylesheets/flexslider.css" rel="stylesheet">
     
-	<script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>
-
+	  <script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>
+    <script src="/javascripts/socket.io.js"></script>
     <style type="text/css">
       body {
         padding-top: 60px;
@@ -29,42 +29,40 @@
     <link rel="shortcut icon" href="assets/ico/favicon.ico">
 
   	<!-- Google Fonts call. Font Used Open Sans & Raleway -->
-	<link href="http://fonts.googleapis.com/css?family=Raleway:400,300" rel="stylesheet" type="text/css">
+	  <link href="http://fonts.googleapis.com/css?family=Raleway:400,300" rel="stylesheet" type="text/css">
   	<link href="http://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet" type="text/css">
 
-<script type="text/javascript">
-$(document).ready(function () {
+    <script type="text/javascript">
+      $(document).ready(function () {
 
-    $("#btn-blog-next").click(function () {
-      $('#blogCarousel').carousel('next')
-    });
-     $("#btn-blog-prev").click(function () {
-      $('#blogCarousel').carousel('prev')
-    });
+          $("#btn-blog-next").click(function () {
+            $('#blogCarousel').carousel('next')
+          });
+          $("#btn-blog-prev").click(function () {
+            $('#blogCarousel').carousel('prev')
+          });
 
-     $("#btn-client-next").click(function () {
-      $('#clientCarousel').carousel('next')
-    });
-     $("#btn-client-prev").click(function () {
-      $('#clientCarousel').carousel('prev')
-    });
-    
-});
+          $("#btn-client-next").click(function () {
+            $('#clientCarousel').carousel('next')
+          });
+          $("#btn-client-prev").click(function () {
+            $('#clientCarousel').carousel('prev')
+          });
+          
+      });
 
- $(window).load(function(){
+      $(window).load(function(){
 
-    $('.flexslider').flexslider({
-        animation: "slide",
-        slideshow: true,
-        start: function(slider){
-          $('body').removeClass('loading');
-        }
-    });  
-});
+          $('.flexslider').flexslider({
+              animation: "slide",
+              slideshow: true,
+              start: function(slider){
+                $('body').removeClass('loading');
+              }
+          });  
+      });
 
-</script>
+    </script>
 
-
-    
   </head>
   <body>
