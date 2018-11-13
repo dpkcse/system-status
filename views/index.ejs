@@ -106,7 +106,7 @@
       $("#totalRAM").text((Math.round((response.total / 1024) / 1024))+"MB")
       $("#usedRAM").text((Math.round((response.used / 1024) / 1024))+"MB")
       var chart = window.chart = $('#Memory').data('easyPieChart');
-      chart.update(((response.used / 1024) / 1024)/100);
+      chart.update(Math.round((100 / response.total)*response.used));
     });
 
     socket.emit('fsSizeStatus', function (response) {
