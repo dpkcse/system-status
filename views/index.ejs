@@ -1,112 +1,91 @@
 <%- include('partials/head'); -%>
-  
-  	<!-- NAVIGATION MENU -->
-<!-- 
-    <div class="navbar-nav navbar-inverse navbar-fixed-top">
-      <div class="container">
-      <div class="navbar-header">
-        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-        </button>
-        <a class="navbar-brand" href="index.html"><img src="/img/logo30.png" alt=""> BLOCKS Dashboard</a>
-      </div> 
-        <div class="navbar-collapse collapse">
-          <ul class="nav navbar-nav">
-            <li class="active"><a href="index.html"><i class="icon-home icon-white"></i> Home</a></li>
-            <li><a href="manager.html"><i class="icon-folder-open icon-white"></i> File Manager</a></li>
-            <li><a href="calendar.html"><i class="icon-calendar icon-white"></i> Calendar</a></li>
-            <li><a href="tables.html"><i class="icon-th icon-white"></i> Tables</a></li>
-            <li><a href="login.html"><i class="icon-lock icon-white"></i> Login</a></li>
-            <li><a href="user.html"><i class="icon-user icon-white"></i> User</a></li>
-
-          </ul>
-        </div><!--/.nav-collapse -->
-      </div>
-  </div> -->
-
   <div class="container">
 
   <!-- FIRST ROW OF BLOCKS -->     
     <div class="row">
     <!-- DONUT CHART BLOCK -->
-      <div class="col-sm-3 col-lg-3">
-        <div class="dash-unit">
-          <dtitle>Site Bandwidth</dtitle>
-          <hr>
-          <div id="load"></div>
-          <h2>45%</h2>
+    <div class="col-sm-3 col-lg-3">
+      <div class="dash-unit">
+        <dtitle>Memory Status</dtitle>
+        <hr>
+        <div class="info-user">
+          <span aria-hidden="true" class="li_lab fs2"></span>
         </div>
+        <span class="chart" id="Memory" data-percent="0">
+          <span class="percent"></span>
+        </span>
+        <p class="easyChartP">Total: <span id="totalRAM"></span> &nbsp; Used: <span id="usedRAM"></span></p>
       </div>
+    </div>
 
     <!-- DONUT CHART BLOCK -->
-      <div class="col-sm-3 col-lg-3">
-        <div class="dash-unit">
-          <dtitle>Disk Space</dtitle>
-          <hr>
-          <div id="space"></div>
-          <h2>65%</h2>
+    <div class="col-sm-3 col-lg-3">
+      <div class="dash-unit">
+        <dtitle>Disk Space</dtitle>
+        <hr>
+        <div class="info-user">
+          <span aria-hidden="true" class="li_lab fs2"></span>
         </div>
+        <span class="chart" id="Disk" data-percent="0">
+          <span class="percent"></span>
+        </span>
       </div>
+    </div>
       
-      <div class="col-sm-3 col-lg-3">
-
+    <div class="col-sm-3 col-lg-3">
     <!-- LOCAL TIME BLOCK -->
-        <div class="half-unit">
-          <dtitle>Local Time</dtitle>
-          <hr>
-            <div class="clockcenter">
-              <digiclock>12:45:25</digiclock>
-            </div>
-        </div>
-
-        <!-- SERVER UPTIME -->
-        <div class="half-unit">
-              <dtitle>Server Uptime</dtitle>
-              <hr>
-              <div class="cont">
-            <p><img src="/img/up.png" alt=""> <bold>Up</bold> | 356ms.</p>
+      <div class="half-unit">
+        <dtitle>Server Time</dtitle>
+        <hr>
+          <div class="clockcenter">
+            <digiclock id="clock">Loading...</digiclock>
           </div>
-        </div>
+      </div>
+
+      <!-- SERVER UPTIME -->
+      <div class="half-unit networkStatus">
+            <dtitle>Network Status</dtitle>
+            <hr>
           
-
+          <p><img src="/img/down.png" alt="">
+            <bold>Download</bold> | <span id="dVal"></span>
+          </p>
+          <p><img src="/img/up.png" alt="">
+            <bold>Upload</bold> | <span id="uVal"></span>
+          </p>
       </div>
-      <!-- GAUGE CHART BLOCK -->
-      <div class="col-sm-3 col-lg-3">
-        <div class="dash-unit">
-          <dtitle>Gauge Chart</dtitle>
-          <hr>
-          <div class="info-user">
-            <span aria-hidden="true" class="li_lab fs2"></span>
-          </div>
-          <canvas id="canvas" width="300" height="300">
-          </canvas>
+    </div>
+    <!-- GAUGE CHART BLOCK -->
+    <div class="col-sm-3 col-lg-3">
+      <div class="dash-unit">
+        <dtitle>CPU Status</dtitle>
+        <hr>
+        <div class="info-user">
+          <span aria-hidden="true" class="li_lab fs2"></span>
         </div>
+        <canvas id="canvas" width="300" height="300">
+        </canvas>
       </div>
-    </div><!-- /row -->
-  
-    
+    </div>
+  </div><!-- /row -->
 </div> <!-- /container -->
 <div id="footerwrap">
-      <footer class="clearfix"></footer>
-      <div class="container">
-        <div class="row">
-          <div class="col-sm-12 col-lg-12">
-          <p><img src="/img/logo.png" alt=""></p>
-          <p>System Iformation Board - Hyper Remede - Copyright 2018</p>
-          <button onclick="aaa();">bbbbbbbbbbbbbbbbbb</button>
-          </div>
+    <footer class="clearfix"></footer>
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-12 col-lg-12">
+        <p><img src="/img/logo.png" alt=""></p>
+        <p>System Iformation Board - Hyper Remede - Copyright 2018</p>
+        </div>
 
-        </div><!-- /row -->
-      </div><!-- /container -->		
+      </div><!-- /row -->
+    </div><!-- /container -->		
 </div><!-- /footerwrap -->
 <%- include('partials/foot'); -%>
 <script>
   var socket = io.connect();
   socket.on('connect', function (data) {
     socket.emit('join', 'Hello World from client');
-    socket.emit('connected', { from: new Date()});
   });
 
   /**
@@ -115,12 +94,56 @@
   socket.on('disconnect', function () {
     console.log('Disconnected');
   });
-
-  function aaa(){
-    socket.emit('getRamInfo',function(response){
-      console.log(response)
-    });
-  }
-
   
+  moment.duration(1, "seconds").timer({
+    loop: true,
+    wait: 2500,
+    executeAfterWait: true
+  },
+  function () {
+    update();
+    socket.emit('getRamInfo', function (response) {
+      $("#totalRAM").text((Math.round((response.total / 1024) / 1024))+"MB")
+      $("#usedRAM").text((Math.round((response.used / 1024) / 1024))+"MB")
+      var chart = window.chart = $('#Memory').data('easyPieChart');
+      chart.update(((response.used / 1024) / 1024)/100);
+    });
+
+    socket.emit('fsSizeStatus', function (response) {
+      console.log(response);
+      var chart = window.chart = $('#Disk').data('easyPieChart');
+      chart.update(response[0].use);
+    });
+
+    socket.emit('netWorkStatus', function (response) {
+      $("#dVal").text((response.rx_sec/1024).toPrecision(2)+"kbps");
+      $("#uVal").text((response.tx_sec/1024).toPrecision(2)+"kbps");
+    });
+
+  });
+
+  moment.duration(15, "seconds").timer({
+    loop: true,
+    wait: 2500,
+    executeAfterWait: true
+  },
+  function () {
+    socket.emit('cpuStatus', function (response) {
+      new_degrees = response.avg;
+      draw()
+    });
+
+
+  });
+
+  $('.chart').easyPieChart({
+    easing: 'easeOutBounce',
+    onStep: function (from, to, percent) {
+      $(this.el).find('.percent').text(Math.round(percent));
+    }
+  });
+
+  function update() {
+    $('#clock').html(moment().format('H:mm:ss'));
+  }
 </script>

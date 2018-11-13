@@ -1,36 +1,36 @@
 ﻿/*** First Chart in Dashboard page ***/
+//ramChart(0,0);
+function ramChart(used, unsed){
+	new Highcharts.Chart({
+		chart: {
+			renderTo: 'load',
+			margin: [0, 0, 0, 0],
+			backgroundColor: null,
+			plotBackgroundColor: 'none',
 
-	$(document).ready(function() {
-		info = new Highcharts.Chart({
-			chart: {
-				renderTo: 'load',
-				margin: [0, 0, 0, 0],
-				backgroundColor: null,
-                plotBackgroundColor: 'none',
-							
-			},
-			
-			title: {
-				text: null
-			},
+		},
 
-			tooltip: {
-				formatter: function() { 
-					return this.point.name +': '+ this.y +' %';
-						
-				} 	
-			},
-		    series: [
-				{
+		title: {
+			text: null
+		},
+
+		tooltip: {
+			formatter: function () {
+				return this.point.name + ': ' + this.y + ' %';
+
+			}
+		},
+		series: [
+			{
 				borderWidth: 2,
 				borderColor: '#F1F3EB',
-				shadow: false,	
+				shadow: false,
 				type: 'pie',
 				name: 'Income',
 				innerSize: '65%',
 				data: [
-					{ name: 'load percentage', y: 45.0, color: '#b2c831' },
-					{ name: 'rest', y: 55.0, color: '#3d3d3d' }
+					{ name: 'load percentage', y: 45, color: '#b2c831' },
+					{ name: 'rest', y: 55, color: '#3d3d3d' }
 				],
 				dataLabels: {
 					enabled: false,
@@ -38,9 +38,8 @@
 					connectorColor: '#000000'
 				}
 			}]
-		});
-		
-	});
+	}); 
+}
 
 /*** second Chart in Dashboard page ***/
 
